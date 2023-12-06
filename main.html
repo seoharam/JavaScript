@@ -1,0 +1,80 @@
+<!-- Basic Structure -->
+<html>
+    <!-- Title -->
+    <head>
+
+    </head>
+
+    <!-- Contents -->
+    <body>
+        <h1 id = 'grade'>
+        
+        </h1>
+
+        <!-- JavaScript -->
+        <script>
+            // for, while
+            const num = parseInt(prompt());
+
+            let msg = '';
+            let i = 0;
+
+            while (i < num) {
+                msg += 'hello ';
+                i+=1;
+            }
+
+            /*let msg = '';
+            for (let i = 0; i < num; i ++) {
+                msg += 'hello ';
+            }*/
+
+            document.querySelector('h1#grade').textContent = msg;
+
+            /*// 삼항연산자
+            // 50 -> pass, otherwise -> fail
+            const msg = (score >= 50)? 'pass':'fail';
+            document.querySelector('h1#grade').textContent = msg;
+            */
+
+            /*// switch
+            const score = parseInt(prompt());
+
+            switch (score) {
+                case 100:
+                    document.querySelector('h1#grade').textContent = 'Perfect';
+                    break;
+                case 90:
+                    document.querySelector('h1#grade').textContent = 'Sufficient';
+                    break;
+                default:
+                    document.querySelector('h1#grade').textContent = 'So So'
+            }*/
+            
+            // if 
+            //const score = parseInt(prompt());
+            //if (score >= 90) {
+            //    document.querySelector('h1#grade').textContent = 'A';
+            //}
+            //else if (score >= 80) {
+            //   document.querySelector('h1#grade').textContent = 'B';
+            //}
+            //else {
+            //    document.querySelector('h1#grade').textContent = 'C';
+            //}
+            
+            // undefined, null
+            //let k;
+            //console.log('k is: ', k)
+
+            //let x = null;
+            //console.log('x is: ', x)
+            
+            // ==, ===, !=, !==
+            //console.log('1 == 1: ', (1==1));
+            //console.log("'1' === 1: ", ('1'===1));
+            // <, >, <=, >= -> 사전순으로 따짐 not 문자열 개수
+            //console.log('ack < abk: ', ('ack' == 'abk'))
+        </script>
+    </body>
+</html>
