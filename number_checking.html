@@ -1,0 +1,82 @@
+<!-- Basic Structure -->
+<html>
+    <!-- Title -->
+    <head>
+
+    </head>
+
+    <!-- Contents -->
+    <body>
+        <!-- group 1 -->
+        <h1>
+            "Please put your number !"
+        </h1>
+
+        <!-- group 2 -->
+        <div>
+            <input id = 'input_num', type = 'text'>
+            <button id = 'btn_submit'>START</button>
+            <button id = 'btn_chgClr'>CHANGE COLOR</button>
+        </div>
+        
+        <!-- group 3 -->
+        <h1 id = 'result'>
+
+        </h1>
+
+        <!-- JavaScript -->
+        <script>
+            // red -> green -> blue -> ...
+            const clr_array = ['red', 'green', 'blue'];
+            let clr_idx = 0;
+
+            // 사전에 설정한 html component를 사용하기 위해서 변수로 할당
+            const w_btn_submit = document.querySelector('#btn_submit');
+            const w_btn_chgClr = document.querySelector('#btn_chgClr');
+            const w_input = document.querySelector('#input_num');
+            const w_h1_result = document.querySelector('#result');
+
+            // n이 짝수면 True, or False 반환
+            const isEven = (n) => {
+                if (n % 2 == 0) {
+                    return false;
+                }
+                else {
+                    return true;
+                }
+            };
+
+            // Event function
+            w_btn_submit.addEventListener('click', () => {
+                console.log('Be pressed button !')
+
+                const temp = parseInt(w_input.value);
+
+                // NaN : Not a Number == null
+                if (!temp) {
+                    w_h1_result.textContent = "Please put your number again !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+                }
+                else {
+                    let decision = 'odd number';
+                    if (isEven(temp)==true) {
+                        decision = 'even number'
+                    }
+                    
+                    w_h1_result.textContent = temp+ ' : '+decision;
+                }
+                // 입력 받으면 기존의 value는 없앤다. 
+                w_input.value = '';
+                // 바로 입력할 수 있도록 cursor를 해당 input 창에 위치 시킨다.
+                w_input.focus();
+
+            });
+
+            w_btn_chgClr.addEventListener('click', () => {
+                clr_idx = (clr_idx + 1) % clr_array.length;
+                console.log('Current color : '+clr_array[clr_idx])
+                w_h1_result.style.color = clr_array[clr_idx];
+            })
+
+        </script>
+    </body>
+</html>
