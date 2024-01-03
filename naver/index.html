@@ -1,0 +1,70 @@
+<!-- language setting with korean -->
+<html lang="ko">
+    
+<!-- html doc description -->
+<head>
+    <!-- about language Compatibility -->
+    <meta charset="UTF-8">
+    <!-- this is for internet explorer -->
+    <meta http-equiv = "X-UA-Compatible" content = 'IE=edge'>
+    <!-- this is for considering cell-phone -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- this is for favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href='./reference/favicon.ico'>
+    <!-- this is for html title -->
+    <title>NAVER</title>
+    <!-- this is for css file -->
+    <style>
+        /* web browser's css setting reset */
+        html, body{
+            margin: 0;
+            padding: 0;
+        }
+        /* css contents for element of body */
+        #wrap {
+            text-align: center;
+        }
+        #header{
+            text-align: left;
+        }
+        #wrap-center {
+            width: 1280px;
+            display: inline-block;
+            background-color: yellow;
+        }
+        #header-hamburger{
+            margin-top: 18px;
+            padding: 10px;
+            display: inline-block;
+        }
+        /* header-hamburger's child element */
+        #header-hamburger > div{
+            background-size: 433px 412px;
+            background-position: -335px -81px;
+            background-repeat: no-repeat;
+            background-image: url(./reference/sp_main.png);
+            width : 26px;
+            height: 26px;
+        }
+        #main {
+            height : 2000px;
+        }
+    </style>
+</head>
+
+<!-- Set contents -->
+<body>
+    <div id = 'wrap'>
+        <div id = 'wrap-center'>
+            <div id = 'header'>
+                <div id = 'header-hamburger'>
+                    <div></div>
+                </div>
+            </div>
+            <div id = 'search'></div>
+            <div id = 'nav'></div>
+            <div id = 'main'></div>
+        </div>
+    </div>
+</body>
+</html>
