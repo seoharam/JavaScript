@@ -18,35 +18,104 @@
 
     <body>
         <script>
-            // create element
+            // create element variable
             const cp_table = document.createElement('table');
             const cp_result = document.createElement('div');
 
-            // temp variable
+            // temp variable for mark
             let mark = 'O'
 
-            // function
+            // temp variable for checking game numbering
+            let cnt = 0
+
+            // create another table for saving td value
+            const board = []
+            
+            // function for checking winner with td's location
+            const checkWin = (_td) => {
+                // parentNode = tr , cellIndex = td index
+                let rowIndex = _td.parentNode.rowIndex;
+                let colIndex = _td.cellIndex;
+                
+                // horizontal line check
+                if (board[rowIndex][0].textContent === mark &&
+                    board[rowIndex][1].textContent === mark &&
+                    board[rowIndex][2].textContent === mark ) {
+                        return true;
+                    }
+
+                // vertical line check
+                if (board[0][colIndex].textContent === mark &&
+                    board[1][colIndex].textContent === mark &&
+                    board[2][colIndex].textContent === mark ) {
+                        return true;
+                    }
+
+                // descenting diagonal line check -> back-slash
+                if (board[0][0].textContent === mark &&
+                    board[1][1].textContent === mark &&
+                    board[2][2].textContent === mark ) {
+                        return true;
+                    }
+
+                // ascenting diagonal line check -> slash
+                if (board[0][2].textContent === mark &&
+                    board[1][1].textContent === mark &&
+                    board[2][0].textContent === mark ) {
+                        return true;
+                    }
+
+                return false;
+            };
+            
+            // function for tictactoe game
             const table_event_listener = (event) => {
                 const which_td = event.target.closest('td');
+
+                // if there is already mark, pass that cell
+                if (which_td.textContent !== '') {
+                    return ;
+                }
+                // set mark to td element
                 which_td.textContent = mark;
-                if (mark === 'O'){
-                    mark = 'X';
+
+                cnt = cnt + 1;
+                console.log(cnt)
+
+                // check Winner before change mark
+                if (checkWin(which_td) === true) {
+                    cp_result.textContent = mark +' is winner'
+                    // if winner is decided, event listner must be removed
+                    cp_table.removeEventListener('click', table_event_listener) 
+                    // return is end sign of function
+                    return;
                 }
-                else {
-                    mark = 'O';
+
+                // if all of table is full, then draw
+                if (cnt === 9) {
+                    cp_result.textContent = 'This game is Draw';
+                    cp_table.removeEventListener('click', table_event_listener);
+                    return;
                 }
+                
+                // if previous cell mark is 'O', then change mark to 'X'
+                mark = (mark === 'O')?'X':'O';                
+
             }
 
             // create table automatically
             for (let i = 0; i < 3; i++) { // table row
                 const cp_tr = document.createElement('tr');
+                const t_row = []
+
                 for (let j = 0; j < 3; j++) { // table data
                     const cp_td = document.createElement('td');
                     cp_tr.append(cp_td);
+                    t_row.push(cp_td); // push td value into t_row
                 }
+                board.push(t_row) // push t_row into board variable
                 cp_table.append(cp_tr);
             }
-
             document.body.append(cp_table);
             document.body.append(cp_result);
 
